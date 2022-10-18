@@ -37,18 +37,18 @@ dependencies {
     implementation 'com.google.android.gms:play-services-basement:18.1.0'
 
     //Primary Ad Networks
-    implementation 'com.google.android.gms:play-services-ads:21.1.0'
-    implementation 'com.startapp:inapp-sdk:4.10.1'
-    implementation 'com.applovin:applovin-sdk:11.4.4'
-    implementation 'com.facebook.android:audience-network-sdk:6.11.0'
+    implementation 'com.google.android.gms:play-services-ads:21.3.0'
+    implementation 'com.startapp:inapp-sdk:4.10.4'
+    implementation 'com.applovin:applovin-sdk:11.5.3'
+    implementation 'com.facebook.android:audience-network-sdk:6.12.0'
 
     //AdMob mediation
-    implementation 'com.google.ads.mediation:applovin:11.4.4.0'
+    implementation 'com.google.ads.mediation:applovin:11.5.2.0'
     implementation 'com.google.ads.mediation:facebook:6.11.0.1'
 
     //AppLovin mediation
-    implementation 'com.applovin.mediation:google-adapter:21.1.0.1'
-    implementation 'com.applovin.mediation:facebook-adapter:6.11.0.5'
+    implementation 'com.applovin.mediation:google-adapter:21.3.0.0'
+    implementation 'com.applovin.mediation:facebook-adapter:6.12.0.0'
 
     //GDPR
     implementation 'com.google.android.ump:user-messaging-platform:2.0.0'

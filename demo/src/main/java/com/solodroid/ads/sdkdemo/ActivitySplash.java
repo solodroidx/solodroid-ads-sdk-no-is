@@ -1,6 +1,7 @@
 package com.solodroid.ads.sdkdemo;
 
 import static com.solodroid.ads.sdk.util.Constant.ADMOB;
+import static com.solodroid.ads.sdk.util.Constant.GOOGLE_AD_MANAGER;
 
 import android.app.Application;
 import android.content.Intent;
@@ -9,24 +10,42 @@ import android.os.CountDownTimer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.solodroid.ads.sdk.format.AdNetwork;
+
 public class ActivitySplash extends AppCompatActivity {
 
     private static final long COUNTER_TIME = 2000;
     long secondsRemaining;
     Application application;
+    AdNetwork.Initialize adNetwork;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        if (Constant.AD_NETWORK.equals(ADMOB)) {
+        initAds();
+
+        if (Constant.AD_NETWORK.equals(ADMOB) || Constant.AD_NETWORK.equals(GOOGLE_AD_MANAGER)) {
             application = ((MyApplication) getApplication());
             ((MyApplication) application).showAdIfAvailable(ActivitySplash.this, this::createTimer);
         } else {
             startMainActivity();
         }
 
+    }
+
+    private void initAds() {
+        adNetwork = new AdNetwork.Initialize(this)
+                .setAdStatus(Constant.AD_STATUS)
+                .setAdNetwork(Constant.AD_NETWORK)
+                .setBackupAdNetwork(Constant.BACKUP_AD_NETWORK)
+                .setAdMobAppId(null)
+                .setStartappAppId(Constant.STARTAPP_APP_ID)
+                .setUnityGameId(Constant.UNITY_GAME_ID)
+                .setAppLovinSdkKey(getResources().getString(R.string.applovin_sdk_key))
+                .setDebug(BuildConfig.DEBUG)
+                .build();
     }
 
     private void createTimer() {
